@@ -1,0 +1,37 @@
+= Demo for sending Confluent Platform logs to ELK
+
+This demo show how to send log files to ELK (Elastic, Logstash, Kibana).
+
+== Preconditions
+
+Adapt the testbench to your version of Confluent Platform as required by modifying `.env`.
+
+== Running Confluent Platform
+
+Start the containers by running:
+```
+docker compose up -d
+```
+
+Stopping the containers without removing any volumes:
+```
+docker compose down
+```
+
+Stopping the containers with removal of all created volumes (be careful!):
+```
+docker compose down -v
+```
+
+Cleaning up (CAREFUL: THIS WILL DELETE ALL UNUSED VOLUMES):
+```
+docker volumes prune
+```
+
+== Usage
+
+Access `kibana` with your web browser here:
+
+* URL: `http://localhost:5601`
+* Username: `elastic`
+* Password: `elastic`
