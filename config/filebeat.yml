@@ -1,15 +1,27 @@
-filebeat.inputs:
-- type: filestream
-  id: default-filestream
-  paths:
-    - ingest_data/*.log
+# filebeat.inputs:
+# - type: filestream
+#   id: default-filestream
+#   paths:
+#     - ingest_data/*.log
+
+# filebeat.autodiscover:
+#  providers:
+#    - type: docker
+#      hints.enabled: true
 
 
 filebeat.autodiscover:
- providers:
-   - type: docker
-     hints.enabled: true
-
+  providers:
+    - type: docker
+      templates:
+        - condition:
+            contains:
+              docker.container.image: confluentinc
+          config:
+            - type: container
+              paths:
+                - /var/lib/docker/containers/${data.docker.container.id}/*.log
+              exclude_lines: ["^\\s+[\\-`('.|_]"]  
 
 processors:
 - add_docker_metadata: ~
