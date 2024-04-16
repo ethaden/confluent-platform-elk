@@ -54,3 +54,13 @@ source .venv/bin/activate
 # Install packages
 pip3 install pandas
 ```
+
+You might need to adapt the script slightly if not working with a docker-based infrastructure as in this demo.
+Update the column names in the file. Then run it like this from the virtual environment in the main filder:
+
+```bash
+python3 extract-log-files/extract-log-files.py example/example-data.csv
+```
+
+This should create one log file per node.
+
