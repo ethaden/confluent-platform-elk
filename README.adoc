@@ -35,3 +35,22 @@ Access `kibana` with your web browser here:
 * URL: `http://localhost:5601`
 * Username: `elastic`
 * Password: `elastic`
+
+Go to `Analytics->Discover` and create a new data view.
+Use any name (e.g. `kafka`) and filter on (`filebeat-*`).
+
+Choose a time interval and export data as CSV file by clicking "Share".
+
+== Parsing the CSV files with Python
+
+Install Python 3 and set up the Python environment:
+
+```bash
+cd extract-log-files
+# Create a virtual environment in sub folder .venv
+python3 -m venv .venv
+# Activate the virtual environment
+source .venv/bin/activate
+# Install packages
+pip3 install pandas
+```
