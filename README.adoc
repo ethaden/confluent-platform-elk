@@ -9,24 +9,31 @@ Adapt the testbench to your version of Confluent Platform as required by modifyi
 == Running Confluent Platform
 
 Start the containers by running:
-```
+```bash
 docker compose up -d
 ```
 
 Stopping the containers without removing any volumes:
-```
+```bash
 docker compose down
 ```
 
 Stopping the containers with removal of all created volumes (be careful!):
-```
+```bash
 docker compose down -v
 ```
 
 Cleaning up (CAREFUL: THIS WILL DELETE ALL UNUSED VOLUMES):
-```
+```bash
 docker volumes prune
 ```
+
+Note: The default setup has been optimized for smaller machines and thus consists of exactly one Zookeeper node, one Kafka broker, and one Schema Registry instance.
+If you use a powerful machine and want to see how ELK handles multiple Zookeeper nodes and Kafka brokers, use the compose file `compose-large.yaml` instead, for example:
+```bash
+docker compose -f compose-large.yaml up -d
+```
+
 
 == Usage
 
