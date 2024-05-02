@@ -14,6 +14,8 @@ xpack.fleet.packages:
     version: latest
   - name: apm
     version: latest
+  - name: docker
+    version: latest
 xpack.fleet.agentPolicies:
   - name: Fleet-Server-Policy
     id: fleet-server-policy
