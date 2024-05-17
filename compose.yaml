@@ -207,7 +207,7 @@ services:
      - SERVER_SSL_CERTIFICATE=config/certs/kibana/kibana.crt
      - SERVER_SSL_KEY=config/certs/kibana/kibana.key
      - SERVER_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
-     - ELASTIC_APM_SECRET_TOKEN=${ELASTIC_APM_SECRET_TOKEN}
+     #- ELASTIC_APM_SECRET_TOKEN=${ELASTIC_APM_SECRET_TOKEN}
    mem_limit: ${KB_MEM_LIMIT}
    healthcheck:
      test:
@@ -255,7 +255,7 @@ services:
       - KIBANA_CA=/usr/share/metricbeat/certs/ca/ca.crt
     command: --strict.perms=false -e
 
-
+  # Docker container for running the configured fleet agent. The agent will capture docker logs
   fleet-server:
     depends_on:
       kibana:
@@ -265,8 +265,8 @@ services:
     profiles: [agent]
     image: docker.elastic.co/beats/elastic-agent:${STACK_VERSION}
     volumes:
-      - certs:/certs
-      - fleetserverdata:/usr/share/elastic-agent
+      - "certs:/certs"
+      - "fleetserverdata:/usr/share/elastic-agent"
       - "/var/lib/docker/containers:/var/lib/docker/containers:ro"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "/sys/fs/cgroup:/hostfs/sys/fs/cgroup:ro"
@@ -274,7 +274,7 @@ services:
       - "/:/hostfs:ro"
     ports:
       - ${FLEET_PORT}:8220
-      - ${APMSERVER_PORT}:8200
+      #- ${APMSERVER_PORT}:8200
     user: root
     environment:
       - SSL_CERTIFICATE_AUTHORITIES=/certs/ca/ca.crt

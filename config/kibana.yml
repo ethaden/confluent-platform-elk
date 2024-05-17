@@ -1,10 +1,11 @@
-elastic:
-  apm:
-    active: true
-    serverUrl: "http://fleet-server:8200"
-    secretToken: ${ELASTIC_APM_SECRET_TOKEN}
+#elastic:
+#  apm:
+#    active: true
+#    serverUrl: "http://fleet-server:8200"
+#    secretToken: ${ELASTIC_APM_SECRET_TOKEN}
 server.host: "0.0.0.0"
 telemetry.enabled: "true"
+xpack.fleet.agents.elasticsearch.hosts: ["https://es01:9200"]
 xpack.fleet.packages:
   - name: fleet_server
     version: latest
@@ -12,8 +13,8 @@ xpack.fleet.packages:
     version: latest
   - name: elastic_agent
     version: latest
-  - name: apm
-    version: latest
+  #- name: apm
+  #  version: latest
   - name: docker
     version: latest
 xpack.fleet.agentPolicies:
