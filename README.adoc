@@ -37,12 +37,13 @@ docker volumes prune
 
 Access `kibana` with your web browser here (you need to create an exception as the certificate is self-signed):
 
-* URL: `https://localhost:5601`
+* URL: `http://localhost:5601`
 * Username: `elastic`
 * Password: `elastic`
 
-Go to `Analytics->Discover` and create a new data view.
-Use any name (e.g. `kafka`) and filter on (`filebeat-*`).
+Go to `Analytics->Discover`.
+
+If using the `filebeat` profile, create a new data view. Use any name (e.g. `kafka`) and filter on `filebeat-*`.
 
 Choose a time interval and export data as CSV file by clicking "Share".
 
